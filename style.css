@@ -1,0 +1,232 @@
+/* Base / layout */
+body {
+  margin: 0;
+  font-family: 'Google Sans Text', sans-serif;
+  background: linear-gradient(180deg, rgba(4,14,23,1) 0%, rgba(13,27,42,1) 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+/* Rotate warning */
+#rotate-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0d1b2a;
+  color: #ffbcee;
+  font-size: 1.6rem;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  text-align: center;
+  padding: 2rem;
+  transition: opacity 0.25s ease;
+}
+#rotate-warning.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* main wrapper */
+main {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* content */
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  width: 100%;
+  gap: 2rem;
+  flex-wrap: nowrap;
+}
+
+.image-container {
+  flex: 0 0 70%;
+  max-width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#guide-image {
+  width: auto;
+  height: 520.4px;
+  max-height: 70vh;
+  filter: drop-shadow(0px 0px 5px rgba(0, 145, 255, 0.25));
+  border-radius: 16px;
+}
+
+.image-text {
+  flex: 1;
+  white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+/* Buttons row layout:
+   - center-slot is absolutely centered so prev/next never move
+   - left and right slots can change width without affecting the center
+*/
+.buttons-row {
+  position: relative;
+  width: 100%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.left-slot, .right-slot {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 48px;
+}
+
+/* Center slot pinned to middle */
+.center-slot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* custom buttons area (right slot) */
+#custom-btn-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* keep Material button disabled look but not removed */
+.mdc-button[disabled] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* small tweaks */
+.mdc-button--outlined {
+  border-color: #00bcd4;
+  color: #00bcd4;
+  box-shadow: 0px 0px 7px rgba(0,0,0,0.6);
+}
+
+.mdc-button--raised {
+  background-color: #ff9800;
+  color: #000;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.6);
+}
+
+.mdc-button--raised:hover { background-color: #fb8c00; }
+
+/* Help overlay */
+#help-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.86);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+#help-overlay[aria-hidden="false"] { display: flex; }
+
+.help-content {
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  text-align: center;
+  position: relative;
+  color: white;
+  background: linear-gradient(180deg, rgba(6,10,15,0.85), rgba(10,15,20,0.95));
+  border-radius: 12px;
+  padding: 1rem 1.25rem 1.5rem 1.25rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+#help-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.help-content img {
+  max-width: 100%;
+  max-height: 55vh;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 0.75rem auto;
+}
+
+#help-text {
+  white-space: pre-wrap;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* help nav */
+.help-nav {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .content-wrapper { flex-direction: column; text-align: center; gap: 1rem; }
+  .image-container { max-width: 90vw; flex: none; }
+  #guide-image { max-height: 50vh; }
+  .image-text { max-width: 90vw; }
+}
+
+#credit {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  color: rgba(98, 98, 98, 0.6);
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  z-index: 9999;
+  transition: color 0.3s ease;
+}
+
+#credit:hover {
+  color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Info Window — Material</title>
+
+  <!-- Roboto + Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Material Components Web CSS -->
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0d1b2a;
+      --card-bg: #0f2433;
+      --accent: #0091ff;
+      --on-accent: #ffffff;
+      --text: #e6f0f7;
+    }
+
+    html,body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Roboto', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, rgba(4,14,23,1) 0%, rgba(13,27,42,1) 100%);
+      color: var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .stage {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .info-card {
+      width: 100%;
+      max-width: 560px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(18,36,48,0.9), rgba(13,27,42,0.95));
+      box-shadow:
+        0 12px 30px rgba(0,0,0,0.55),
+        0 6px 18px rgba(0,145,255,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-card__header {
+      padding: 20px 20px 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0,145,255,0.15), rgba(0,145,255,0.05));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 20px;
+      box-shadow: 0 4px 14px rgba(0,145,255,0.06);
+      flex-shrink: 0;
+    }
+
+    .info-title {
+      font-size: 1.125rem;
+      margin: 0;
+      color: var(--text);
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    .info-sub {
+      margin: 2px 0 0 0;
+      color: rgba(230,240,247,0.72);
+      font-size: 0.9rem;
+    }
+
+    .info-card__body {
+      padding: 16px 20px 18px 20px;
+      color: rgba(230,240,247,0.9);
+      font-size: 0.97rem;
+      line-height: 1.45;
+    }
+
+    .info-card__actions {
+      display: flex;
+      gap: 12px;
+      padding: 12px 16px 18px 16px;
+      justify-content: flex-end;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+
+    .mdc-button {
+      --mdc-theme-primary: var(--accent);
+      --mdc-theme-on-primary: var(--on-accent);
+      border-radius: 8px;
+    }
+
+    .mdc-button.mdc-button--outlined {
+      --mdc-theme-primary: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(0,145,255,0.18);
+      background: rgba(0,145,255,0.02);
+    }
+
+    @media (max-width:420px) {
+      .info-card { border-radius: 10px; margin: 6px; }
+      .info-card__header { padding: 16px; }
+      .info-card__body { padding: 14px 16px; }
+      .info-card__actions { padding: 10px 12px 14px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="info-card" role="dialog" aria-labelledby="info-title" aria-describedby="info-desc">
+      <div class="info-card__header">
+        <div class="avatar">i</div>
+        <div>
+          <h3 id="info-title" class="info-title">Notes about AOSP and their Recovery</h3>
+        </div>
+      </div>
+
+      <div class="info-card__body" id="info-desc">
+        <p>
+          In AOSP its common to use their own shipped Recovery. It's highly limited, because you should use a Recovery for anything that isnt related to userdata.
+          What the AOSP people don't do- provide a .tar for Odin.
+        </p>
+        <p>We can make it ourselves. You need a Tool, that can pack a .tar. Windows 11 can do it without programs.</p>
+        <p>Have a file that is named "recovery.img", rightclick, compress to -> .tar. In 7-zip you click add to archive.</p>
+      </div>
+
+      <div class="info-card__actions">
+        <button class="mdc-button mdc-button--raised" id="action-btn">
+          <span class="mdc-button__label">Great!</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script>
+    Array.from(document.querySelectorAll('.mdc-button')).forEach(btn => {
+      mdc.ripple.MDCRipple.attachTo(btn);
+    });
+
+    // Close tab when Take action is clicked
+    document.getElementById('action-btn').addEventListener('click', () => {
+      window.close();
+    });
+  </script>
+</body>
+</html>
