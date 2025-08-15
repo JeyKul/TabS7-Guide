@@ -23,7 +23,7 @@ const steps = [
   { img: "assets/15.png", title: "Step 15", description: "Press \"Wipe\".", help: null, buttons: [] },
   { img: "assets/16.png", title: "Step 16", description: "Press \"Format Data\".", help: null, buttons: [] },
   { img: "assets/17.png", title: "Step 17", description: "Type \"yes\" and press blue button at bottom right.", help: null, buttons: [{ name: "Next steps", url: "https://example.com" }]},
-  { img: "assets/14.png", title: "Step 17", description: "And we're done.", help: null, buttons: [{ name: "Next steps (soon)", url: "./pages/next/" }]},
+  { img: "assets/14.png", title: "Step 18", description: "And we're done.", help: null, buttons: [{ name: "Next steps (soon)", url: "./pages/next/" }]},
 ];
 
 let currentStep = 0;
