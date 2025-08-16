@@ -4,6 +4,7 @@ const aroms = [
   { name: "LineageOS (gts7l*)", url: "https://xdaforums.com/t/rom-official-lineageos-22-weeklies-for-galaxy-tab-s7-wifi-and-s7-lte.4746108/" },
   { name: "RisingOS Revived 7.0", url: "https://xdaforums.com/t/rom-unofficial-15-risingos-revived-7-0-for-tab-s7-wifi-5g-gts7xl-gts7xlwifi.4739117/" },
   { name: "Evolution X (gts7xl*)", url: "https://xdaforums.com/t/rom-t970-t976-16-0-evolution-x-for-tab-s7-wifi-5g.4723153/" },
+  { name: "Evolution X (gts7lwifi)", url: "https://xdaforums.com/t/rom-16-0-gts7lwifi-unofficial-evolution-x-06-28-25.4724017/" },
 ];
 
 // Sample data with links
